@@ -31,7 +31,8 @@ BOARD_CUSTOM_BOOTIMG_MK := device/samsung/a6plte/bootimg.mk
 TARGET_KERNEL_CONFIG := a6plte-recovery_defconfig
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
-
+TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone10/temp
 # Use this flag if the board has a ext4 partition larger than 2gb
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
