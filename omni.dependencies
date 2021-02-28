@@ -1,0 +1,6 @@
+[{
+    "remote": "github",
+    "repository": "Junak/android_kernel_custom_a6plte",
+    "revision": "android-3.18",
+    "target_path": "kernel/samsung/a6plte"
+  }
