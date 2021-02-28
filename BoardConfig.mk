@@ -51,3 +51,5 @@ TW_INCLUDE_FBE := true
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_NTFS_3G := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
+
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
