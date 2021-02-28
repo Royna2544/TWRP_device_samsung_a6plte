@@ -2,7 +2,7 @@
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
-
+TARGET_COPY_OUT_VENDOR := vendor
 TARGET_NO_BOOTLOADER := true
 
 # Platform
