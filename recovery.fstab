@@ -1,13 +1,13 @@
-/boot         emmc /dev/block/platform/soc/7824900.sdhci/by-name/boot
-/recovery     emmc /dev/block/platform/soc/7824900.sdhci/by-name/recovery flags=backup=1
-/system       ext4 /dev/block/platform/soc/7824900.sdhci/by-name/system
-/system_image emmc /dev/block/platform/soc/7824900.sdhci/by-name/system   flags=backup=1;display="System image"
-/vendor       ext4 /dev/block/platform/soc/7824900.sdhci/by-name/vendor   flags=backup=1;display="Vendor"
-/vendor_image emmc /dev/block/platform/soc/7824900.sdhci/by-name/vendor   flags=backup=1;display="Vendor image"
-/odm          ext4 /dev/block/platform/soc/7824900.sdhci/by-name/odm      flags=backup=1;display="ODM"
+/boot         emmc /dev/block/platform/soc/7824900.sdhci/by-name/boot     flags=flashimg;backup=1
+/recovery     emmc /dev/block/platform/soc/7824900.sdhci/by-name/recovery flags=backup=1;flashimg
+/system       ext4 /dev/block/platform/soc/7824900.sdhci/by-name/system   flags=backup=1;wipeingui;display="System"
+/system_image emmc /dev/block/platform/soc/7824900.sdhci/by-name/system   flags=display="System image";flashimg
+/vendor       ext4 /dev/block/platform/soc/7824900.sdhci/by-name/vendor   flags=backup=1;wipeingui;display="Vendor"
+/vendor_image emmc /dev/block/platform/soc/7824900.sdhci/by-name/vendor   flags=display="Vendor image";flashimg
+/odm          ext4 /dev/block/platform/soc/7824900.sdhci/by-name/odm      flags=display="ODM"
 /data         ext4 /dev/block/platform/soc/7824900.sdhci/by-name/userdata flags=encryptable=footer;length=-20480
 /cache        ext4 /dev/block/platform/soc/7824900.sdhci/by-name/cache
 /efs          emmc /dev/block/platform/soc/7824900.sdhci/by-name/efs      flags=backup=1;display="EFS"
-/param        emmc /dev/block/platform/soc/7824900.sdhci/by-name/param    flags=backup=1;display="Param"
+/param        emmc /dev/block/platform/soc/7824900.sdhci/by-name/param    flags=display="Param"
 /external_sd  auto /dev/block/mmcblk1p1                                   flags=display="Micro SDcard";storage;wipeingui;removable
 /usb-otg      auto /dev/block/sda1 /dev/block/sda                         flags=display="USB-OTG";storage;wipeingui;removable
