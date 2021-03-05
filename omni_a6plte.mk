@@ -16,8 +16,7 @@
 #
 
 # Inherit some common Omni stuff.
-$(call inherit-product, vendor/omni/config/gsm.mk)
-$(call inherit-product, vendor/omni/config/common.mk)
+$(call inherit-product, vendor/pb/config/common.mk)
 # Not available in android-10.0+ source
 # $(call inherit-product, build/target/product/embedded.mk)
 
