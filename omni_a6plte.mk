@@ -31,9 +31,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := a6pltektt
-PRODUCT_NAME := omni_a6pltektt
+PRODUCT_DEVICE := a6plte
+PRODUCT_NAME := omni_a6plte
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL := SM-A605K
 PRODUCT_MANUFACTURER := samsung
-PRODUCT_RELEASE_NAME := Galaxy Jean
+PRODUCT_RELEASE_NAME := Galaxy A6+
