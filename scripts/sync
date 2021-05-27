@@ -20,8 +20,5 @@ repo init --no-repo-verify --depth=1 -u $MANIFEST -b $BRANCH -g default,-device,
 
 sudo cp  /tmp/rom/.repo/repo/repo /usr/bin
 # Try with -j22 first, if fails, it will try again with -j8
-repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j20 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j10 
-
-rm -rf .repo # lets remove unnecessary things, so that no storage issue can occur
-
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j20
 tg_sendText "Repo Sync Completed!"
