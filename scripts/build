@@ -1,0 +1,23 @@
+#!/bin/bash
+
+function tg_sendText() {
+curl -s "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
+-d "parse_mode=html" \
+-d text="${1}" \
+-d chat_id=$CHAT_ID \
+-d "disable_web_page_preview=true"
+}
+mkdir -p /tmp/rom
+cd /tmp/rom
+# Depends on where source got synced.
+ln -s ../ci/scripts/build.sh
+# Give it executable permission
+chmod +x ./build.sh
+
+# Here, you must adjust the time in minutes. For my setup, repo sync takes between 8 to 11 mins. And you have to keep time to upload ccache or rom zip. ccache takes about 3 mins to upload and rom.zip takes less than 1 min. So 120 - (11 + 3 + 1) = 105 mins to allocate for build.
+# NOTE: The first 2 true builds will be used to collect ccache. If your ccache is less than 5 GB, then you probably need 1 more run for ccache. Then for final build, you won't need to upload ccache. Therefore, you can reserve more time for the compilation process.
+#timeout --preserve-status 95m 
+./build.sh
+
+tg_sendText "Build completed!"
+sleep 2s # Those sleep times are included to prevent interference issues when sending messages/files to bot.

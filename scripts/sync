@@ -1,0 +1,27 @@
+#!/bin/bash
+
+MANIFEST=https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git
+BRANCH=twrp-10.0
+
+function tg_sendText() {
+curl -s "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
+-d "parse_mode=html" \
+-d text="${1}" \
+-d chat_id=$CHAT_ID \
+-d "disable_web_page_preview=true"
+}
+
+mkdir -p /tmp/rom # Where to sync source
+cd /tmp/rom
+tg_sendText "Downloading sources.."
+
+# Repo init command, that -device,-mips,-darwin,-notdefault part will save you more time and storage to sync, add more according to your rom and choice. Optimization is welcomed! Let's make it quit, and with depth=1 so that no unnecessary things.
+repo init --no-repo-verify --depth=1 -u $MANIFEST -b $BRANCH -g default,-device,-mips,-darwin
+
+sudo cp  /tmp/rom/.repo/repo/repo /usr/bin
+# Try with -j22 first, if fails, it will try again with -j8
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j20 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j10 
+
+rm -rf .repo # lets remove unnecessary things, so that no storage issue can occur
+
+tg_sendText "Repo Sync Completed!"

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+function tg_sendText() {
+curl -s "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
+-d "parse_mode=html" \
+-d text="${1}" \
+-d chat_id=$CHAT_ID \
+-d "disable_web_page_preview=true"
+}
+
+function tg_sendFile() {
+curl -F chat_id=$CHAT_ID -F document=@${1} -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument
+}
+
+# Upload function for uploading rom zip file if you don't want to use google drive !
+up() {
+	curl --upload-file $1 https://transfer.sh/ | tee download.txt
+}
+
+cd /tmp/rom # Depends on where source got synced.
+
+# METHOD 1: Upload to transfer.sh for free temporary storage
+tg_sendText "Uploading final img to transfer.sh.."
+up out/target/product/a20e/recovery.img
+
+
+# METHOD 2: Uploading to Google Drive because it has high upload speed (> 40 mb/s)
+#tg_sendText "Uploading zip(s) to Google Drive.."
+ #aosp is my rclone config name (first line without [] of ~/.config/rclone/rclone.conf file from rclone setupped pc) "final" is where roms will be saved in my cloud.
+ # Different roms have different output names. This one will upload a zip in case you did not give a proper name above. A win-win situation!
+
+tg_sendText "Uploaded ROM to Drive. Get it here-> "$(cat download.txt)
+

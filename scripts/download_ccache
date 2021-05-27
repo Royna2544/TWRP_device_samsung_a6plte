@@ -1,0 +1,31 @@
+#!/bin/bash
+
+function tg_sendText() {
+curl -s "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
+-d "parse_mode=html" \
+-d text="${1}" \
+-d chat_id=$CHAT_ID \
+-d "disable_web_page_preview=true"
+}
+
+function tg_sendFile() {
+curl -F chat_id=$CHAT_ID -F document=@${1} -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument
+}
+
+tg_sendText "Downloading Ccache.."
+
+# So, we got upto 39% build complete for 1 hr 25 mins.
+
+# METHOD 1: Download using aria2c:
+# url=https://roms.chatur27.workers.dev/ccache.tar.gz # Where ccache is located, use your own.
+# time aria2c $url -x16 -s50 # Using aria2c for speed haha, ccache will be at /tmp/ccache.tar.gz since my file name is ccache.tar.gz
+
+# METHOD 2: Download using Google Drive direcly (I have a premium account..HAHA):
+curl $CCACHE_URL > /tmp/ccache.tar.gz
+# Lets see machine specifications and environments
+
+cd /tmp # Where cccahe should be downloaded
+time tar xf ccache.tar.gz  # Extract ccache so ci can use it
+rm -rf ccache.tar.gz # Remove unnecessary downloaded file, it will speed up the upload ccache process
+
+tg_sendText "Ccache downloaded sucessfully"
