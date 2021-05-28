@@ -13,7 +13,7 @@ cd /tmp/rom
 ln -s ../ci/scripts/build.sh
 # Give it executable permission
 chmod +x ./build.sh
-
+sudo apt install -y bc 
 # Here, you must adjust the time in minutes. For my setup, repo sync takes between 8 to 11 mins. And you have to keep time to upload ccache or rom zip. ccache takes about 3 mins to upload and rom.zip takes less than 1 min. So 120 - (11 + 3 + 1) = 105 mins to allocate for build.
 # NOTE: The first 2 true builds will be used to collect ccache. If your ccache is less than 5 GB, then you probably need 1 more run for ccache. Then for final build, you won't need to upload ccache. Therefore, you can reserve more time for the compilation process.
 #timeout --preserve-status 95m 
