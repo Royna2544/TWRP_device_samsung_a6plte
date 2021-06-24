@@ -28,7 +28,11 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS :=  --kernel_offset 0x00008000 --ramdisk_offset 0x02000000 --second_offset 0x00f00000 --tags_offset 0x01e00000
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_CUSTOM_BOOTIMG_MK := device/samsung/a6plte/bootimg.mk
-TARGET_KERNEL_CONFIG := defconfig
+
+# Kernel (Using Prebuilt)
+TARGET_PREBUILT_KERNEL := device/samsung/a6plte/prebuilt/Image.gz-dtb
+
+
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
