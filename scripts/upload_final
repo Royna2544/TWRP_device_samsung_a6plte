@@ -21,7 +21,7 @@ cd /tmp/rom # Depends on where source got synced.
 
 # METHOD 1: Upload to transfer.sh for free temporary storage
 tg_sendText "Uploading final img to transfer.sh.."
-up out/target/product/a20e/recovery.img
+up out/target/product/a6plte/recovery.img
 
 
 # METHOD 2: Uploading to Google Drive because it has high upload speed (> 40 mb/s)
